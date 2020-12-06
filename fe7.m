@@ -11,15 +11,15 @@ D=a*c
 syms z
 H=simplify(CT*(z*eye(2)-A)^(-1)*B+D)
 % Az előzőből kell visszaírni
-szamlalo = -(5*z*(7*z + 5)) ==0;
-nevezo= (- 50*z^2 + 15*z + 39) == 0;
+szamlalo = (5*z*(7*z + 5)) ==0;
+nevezo= ( 50*z^2 - 15*z - 39) == 0;
 
 %számláló
 z1=solve(szamlalo,z)
 
 %nevező
 p=solve(nevezo,z)
+syms k l
+Heqn = H == k/(z-p(1))+l/(z-p(2))
 
-Heqn = H == A1/(z-p(1))+B1/(z-p(2))
-
-hv= solve(Heqn,z)
+hv= solve(Heqn,k,l)
